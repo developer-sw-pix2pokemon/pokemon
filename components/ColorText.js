@@ -1,17 +1,19 @@
 import Component from "../core/Component.js";
 
 export default class ColorText extends Component {
-  constructor($target, props, prompt) {
-    super($target, props);
+  setup() {
     this.$state = {
       prompt: "",
     };
+  }
+  constructor($target, props, prompt) {
+    super($target, props);
   }
 
   template() {
     return `
       <div class="colorText">
-        <h3>당신의 포켓몬을<br> <span style="color: #91EAE4";>text</span>로 만들어주세요!🎨🪄</h3>
+        <h4 style="font-weight:bold">당신의 포켓몬을<br/> <span style="color: #91EAE4";>text</span>로 만들어주세요!🎨🪄</h4>
         <p>
             Ex) Paint the character's body blue. ,<br/>
             Paint the character's eyes green. ,<br/>
@@ -20,7 +22,7 @@ export default class ColorText extends Component {
         <label for="prompt">Prompt :</label>
         <input type="text" id="prompt" name="prompt" value="Paint the character's" placeholder="Paint the character's" size=70"/>
         <a id="pokeball">
-            <img src="../img/pokeball.png">
+            <img id="submit-img" src="../img/pokeball.png">
         </a>
       </div>
         `;
@@ -45,7 +47,7 @@ export default class ColorText extends Component {
           prompt: this.$state.prompt,
         },
         null,
-        location.href.replace(`create/${id}`, "result")
+        window.location.href.replace(`create/${id}`, "result")
       );
       history.go(0);
     });

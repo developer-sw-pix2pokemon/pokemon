@@ -10,7 +10,7 @@ export default class CreatePage extends Component {
         <div class="createPageHeader">
           <h1>Coloring your pokemon</h1>
         </div>
-        <div class="container">
+        <div class="create-container">
           <div class="content">
             <div id="writeName"></div>
             <div class="drawing">

@@ -272,7 +272,7 @@ main.pokemon-list {
 /* CreatePage */
 
 .create {
-  margin: 0px;
+  height: 850px;
   background: #7f7fd5; /* fallback for old browsers */
   background: linear-gradient(
     to right,
@@ -311,13 +311,11 @@ main.pokemon-list {
   font-weight: bold;
 }
 
-.container {
+.create-container {
+  width: 680px;
   background-color: rgba(0, 0, 0, 0.427);
-  /* padding: 15px; */
-  /* max-width: 700px; */
-  width: 80%;
-  height: 800px;
-  margin: 0 auto;
+  height: 750px;
+  margin: 0 20px;
   display: flex; /* Flex 컨테이너로 변경 */
   justify-content: center; /* 수평 가운데 정렬*/
   border-radius: 20px;
@@ -364,49 +362,38 @@ main.pokemon-list {
 
 #colorText {
   margin: 20px 0 0 0;
-  font-size: 17px;
-  position: relative;
+  font-size: 15px;
+  /* position: relative; */
   color: #f3f9ff;
 }
 
-.colorText h3 br {
-  display: none;
+.colorText h4 {
+  margin-bottom: 20px;
 }
 
 .colorText p {
   color: rgb(248, 236, 174);
 }
-.colorText p br {
-  display: none;
-}
 
 .colorText input {
+  width: 80%;
   border: 1px solid #7f7fd59c;
   border-radius: 8px;
   padding: 10px 12px;
+  position: relative;
 }
 
-.colorText a img {
+#submit-img {
   position: absolute;
   width: 22px;
-  height: 22px;
-  border: none;
-  top: 78%;
-  right: 5%;
-  padding: 3px;
-}
-.colorText a br {
-  display: none;
+  bottom: 79px;
+  right: 95px;
 }
 
 /*-------------------------------------------------------------------------*/
 
 /* ResultPage */
 
-* {
-  margin: 0;
-  padding: 0;
-}
 .result {
   background: #a1ffce; /* fallback for old browsers */
   background: -webkit-linear-gradient(
