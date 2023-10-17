@@ -1,0 +1,451 @@
+/* 전체적으로 맞출 CSS */
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border: 1px solid #eaeaea;
+  width: 720px; /* 추후 수정 */
+}
+
+main.pokemon-list {
+  flex: 1 0 auto;
+  height: auto;
+  min-height: 90vh;
+}
+
+/* CollectPage */
+.collectPageHeader {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.collectPageHeader::before {
+  content: "";
+  background-image: url("https://downloadwap.com/thumbs2/wallpapers/wp/new/37/pokemopn-p_QQkufR4I.jpg");
+  background-size: 90% 130%;
+  opacity: 0.7;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  transition: 0.5s;
+}
+
+.collectPageHeader h1 {
+  position: relative;
+  margin: 0;
+  padding: 15px 0 0 0;
+  color: #fff;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+/* 포켓몬 이름 검색창 */
+#search {
+  position: relative;
+  padding-top: 20px;
+  display: inline-block;
+  width: 90%;
+  font-size: 14px;
+}
+
+.searchBox {
+  position: relative;
+  width: 65%;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  transition: 0.5s;
+  box-shadow: 2px 4px 4px 1px #6d6836;
+}
+
+#search img {
+  position: absolute;
+  top: 30%;
+  left: 77%;
+  width: 17px;
+}
+
+#search p {
+  position: relative;
+  color: rgb(255, 237, 146);
+  border-radius: 3px;
+  margin-top: 7px;
+  padding: 2px 2px;
+  opacity: 0.8;
+}
+
+/* 포켓몬 속성 카테고리 */
+#category {
+  position: relative;
+}
+
+#category p {
+  display: inline-block;
+  color: red;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 3px 5px;
+  border-radius: 30px;
+  margin: 3px;
+}
+
+.att-button button {
+  font-size: 13px;
+  background-color: rgb(253, 251, 247);
+  border: 1.8px solid;
+  border-radius: 8px;
+  padding: 3px 8px;
+  width: 50px;
+  height: 30px;
+  margin-top: 3px;
+}
+.att-button button:hover {
+  transform: scale(1.2);
+}
+
+#btn1 {
+  border-color: red;
+}
+#btn2 {
+  border-color: lightskyblue;
+}
+#btn3 {
+  border-color: rgb(36, 237, 18);
+}
+#btn4 {
+  border-color: rgb(15, 7, 50);
+}
+#btn5 {
+  border-color: rgb(96, 90, 100);
+}
+#btn6 {
+  border-color: rgb(98, 118, 222);
+}
+#btn7 {
+  border-color: rgb(19, 38, 135);
+  width: 60px;
+}
+#btn8 {
+  border-color: rgb(76, 38, 104);
+}
+#btn9 {
+  border-color: rgb(255, 255, 0);
+}
+#btn10 {
+  border-color: rgba(115, 199, 255, 0.518);
+}
+#btn11 {
+  border-color: rgb(156, 93, 58);
+}
+#btn12 {
+  border-color: rgb(7, 37, 40);
+}
+#btn13 {
+  border-color: rgba(255, 201, 251, 0.607);
+  width: 60px;
+}
+#btn14 {
+  border-color: rgb(255, 142, 50);
+}
+#btn15 {
+  border-color: rgb(0, 0, 0);
+}
+#btn16 {
+  border-color: rgb(255, 74, 249);
+  width: 60px;
+}
+#btn17 {
+  border-color: rgb(147, 100, 107);
+  width: 60px;
+}
+#btn17 {
+  border-color: rgb(0, 0, 0);
+}
+
+.att-button button:hover {
+  color: white;
+  background-color: gray;
+  font-weight: bold;
+}
+
+/* 포켓몬 리스트 */
+.pokemon-list {
+  padding: 5%;
+  position: relative;
+}
+
+.pokemon-list::before {
+  content: "";
+  background-image: url("./img/pxfuel.jpg");
+  background-size: cover;
+  opacity: 0.2;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  transition: 0.5s;
+}
+
+#pokemonItem {
+  display: flex; /* Flex 컨테이너로 변경 */
+  flex-direction: column;
+}
+
+.PokemonItem a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  transition: 0.5s;
+  position: relative;
+  border: 1.5px solid rgb(255, 231, 111);
+  border-radius: 20px 35px;
+  background-color: #fff;
+  margin: 10px 0;
+  display: flex; /* Flex 아이템으로 변경 */
+  align-items: center; /*수직 가운데 정렬*/
+  box-shadow: 2px 4px 4px 1px #97946b;
+}
+.PokemonItem a:hover {
+  transform: scale(1.07);
+}
+
+.PokemonItem img {
+  width: 20%;
+  height: auto; /* 이미지의 높이 자동 조정 */
+  margin: 10px;
+}
+.pokemon-name,
+.pokemon-att {
+  font-size: 18px;
+  margin: 20px;
+}
+
+/* pagination */
+#pagination {
+  padding-top: 15px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 1rem 0;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.pagination-number,
+.pagination-button {
+  background-color: transparent;
+  border: none;
+  margin: 0.25rem 0.25rem;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 0.2rem;
+}
+
+.pagination-number.active {
+  font-size: 0px;
+  background-image: url(./img/pokeball.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*-------------------------------------------------------------------------*/
+/* CreatePage */
+
+.create {
+  margin: 0px;
+  background: #7f7fd5; /* fallback for old browsers */
+  background: linear-gradient(
+    to right,
+    #91eae4,
+    #86a8e7,
+    #7f7fd5
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #91eae4,
+    #86a8e7,
+    #7f7fd5
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-animation: huerotator 10s infinite alternate;
+  animation: huerotator 10s infinite alternate;
+}
+@keyframes huerotator {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+.createPageHeader {
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center;
+  padding: 10px;
+}
+.createPageHeader h1 {
+  color: #f3f9ff;
+  font-weight: bold;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.427);
+  /* padding: 15px; */
+  /* max-width: 700px; */
+  width: 80%;
+  height: 800px;
+  margin: 0 auto;
+  display: flex; /* Flex 컨테이너로 변경 */
+  justify-content: center; /* 수평 가운데 정렬*/
+  border-radius: 20px;
+}
+
+.content {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#writeName {
+  display: inline-block;
+  background-color: #86a8e798;
+  border-radius: 30px;
+  padding: 15px;
+}
+
+#writeName label {
+  font-size: 20px;
+  font-weight: bold;
+  color: #f3f9ff;
+}
+#writeName label br {
+  display: none;
+}
+#writeName input {
+  border: 1px solid #86a8e798;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 20px;
+}
+
+.content .drawing {
+  padding: 20px;
+  height: 400px;
+}
+
+#image {
+  width: 80%;
+  height: 100%;
+}
+
+#colorText {
+  margin: 20px 0 0 0;
+  font-size: 17px;
+  position: relative;
+  color: #f3f9ff;
+}
+
+.colorText h3 br {
+  display: none;
+}
+
+.colorText p {
+  color: rgb(248, 236, 174);
+}
+.colorText p br {
+  display: none;
+}
+
+.colorText input {
+  border: 1px solid #7f7fd59c;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.colorText a img {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: none;
+  top: 78%;
+  right: 5%;
+  padding: 3px;
+}
+.colorText a br {
+  display: none;
+}
+
+/*-------------------------------------------------------------------------*/
+
+/* ResultPage */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.result {
+  background: #a1ffce; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #faffd1,
+    #a1ffce
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #faffd1,
+    #a1ffce
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.img-compelete {
+  width: 50%;
+  height: auto;
+  margin: 50px auto;
+  text-align: center;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#colorImage {
+  padding: 20px 0;
+  background-color: #fff; /*주의요망!*/
+  width: 70%;
+  height: 75%;
+  box-shadow: 3px 3px 6px 3px #85a38c;
+}
+#colorImage:hover {
+  transform: scale(1.07);
+  transition: 0.5s;
+}
+
+#pokemonName {
+  color: rgb(103, 100, 100);
+  padding: 10px 0;
+}
