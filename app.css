@@ -363,7 +363,6 @@ main.pokemon-list {
 #colorText {
   margin: 20px 0 0 0;
   font-size: 15px;
-  /* position: relative; */
   color: #f3f9ff;
 }
 
@@ -386,7 +385,7 @@ main.pokemon-list {
 #submit-img {
   position: absolute;
   width: 22px;
-  bottom: 79px;
+  bottom: 85px;
   right: 95px;
 }
 
@@ -409,11 +408,8 @@ main.pokemon-list {
 }
 
 .img-compelete {
-  width: 50%;
-  height: auto;
-  margin: 50px auto;
+  height: 800px;
   text-align: center;
-  background: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -421,10 +417,10 @@ main.pokemon-list {
 }
 
 #colorImage {
-  padding: 20px 0;
-  background-color: #fff; /*주의요망!*/
-  width: 70%;
-  height: 75%;
+  width: 60%;
+  height: 500px;
+  background-color: #fff;
+  padding: 10px;
   box-shadow: 3px 3px 6px 3px #85a38c;
 }
 #colorImage:hover {
@@ -434,5 +430,6 @@ main.pokemon-list {
 
 #pokemonName {
   color: rgb(103, 100, 100);
-  padding: 10px 0;
+  padding-top: 30px;
+  font-weight: bold;
 }
