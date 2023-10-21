@@ -3,7 +3,7 @@ import Component from "../core/Component.js";
 export default class Image extends Component {
   template() {
     return `
-        <img id="image" src="">
+        
       `;
   }
 
