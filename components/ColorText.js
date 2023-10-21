@@ -15,12 +15,11 @@ export default class ColorText extends Component {
       <div class="colorText">
         <h4 style="font-weight:bold">당신의 포켓몬을<br/> <span style="color: #91EAE4";>text</span>로 만들어주세요!🎨🪄</h4>
         <p>
-            Ex) Paint the character's body blue. ,<br/>
-            Paint the character's eyes green. ,<br/>
-            Paint the character's belly yellow. , ...
+            Ex) Turn it into blue for the character's head and body.<br/>
+            Turn it into green for the character's eyes and body.
         </p>
         <label for="prompt">Prompt :</label>
-        <input type="text" id="prompt" name="prompt" value="Paint the character's" placeholder="Paint the character's" size=70"/>
+        <input type="text" id="prompt" name="prompt" value="Turn it into"/>
         <a id="pokeball">
             <img id="submit-img" src="../img/pokeball.png">
         </a>
