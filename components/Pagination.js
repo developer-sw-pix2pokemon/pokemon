@@ -1,3 +1,4 @@
+import pokemons from '../data/pokemons.js';
 import Component from "../core/Component.js";
 
 export default class Pagination extends Component {
@@ -5,7 +6,7 @@ export default class Pagination extends Component {
     this.$state = {
       currentPage: 1,
       itemsPerPage: 5,
-      totalItems: 0, // 총 아이템 수를 관리
+      totalItems: pokemons?.length // 총 아이템 수를 관리
     };
   }
 
@@ -24,19 +25,20 @@ export default class Pagination extends Component {
     const nextButton = this.$target.querySelector("#next-button");
 
     prevButton.addEventListener("click", () => {
-      console.log('prev')
-      if (this.$state.currentPage > 1) {
-        this.changePage(this.$state.currentPage - 1);
+      const newPage = this.$state.currentPage - 1; // Decrement the current page
+      if (newPage >= 1) { // Check if the new page is within the valid range
+        this.changePage(newPage); // Pass the new page to changePage method
       }
     });
 
+
     nextButton.addEventListener("click", () => {
-      console.log('next')
       const pageCount = this.calculatePageCount();
-      if (this.$state.currentPage < pageCount) {
-        this.changePage(this.$state.currentPage + 1);
+      const newPage = this.$state.currentPage + 1; // Increment the current page
+      if (newPage <= pageCount) { // Check if the new page is within the valid range
+        this.changePage(newPage); // Pass the new page to changePage method
       }
-    });
+    })
 
     paginationNumbers.addEventListener("click", (e) => {
       if (e.target.classList.contains("pagination-number")) {
@@ -67,9 +69,10 @@ export default class Pagination extends Component {
     return Math.ceil(totalItems / itemsPerPage);
   }
 
+
   changePage(newPage) {
     const pageCount = this.calculatePageCount();
-    console.log('pageCount',pageCount)
+    console.log('newPage',newPage)
     if (newPage < 1) {
       newPage = 1;
     } else if (newPage > pageCount) {
@@ -77,7 +80,7 @@ export default class Pagination extends Component {
     }
     this.$state.currentPage = newPage;
     this.updatePageButtons();
-    this.notify("pagination", newPage); // 페이지 변경을 다른 컴포넌트에 알립니다.
+    this.updatePaginationNumbers();
   }
 
   updatePageButtons() {
