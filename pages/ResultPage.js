@@ -6,16 +6,18 @@ export default class ResultPage extends Component {
   setup() {
     this.$props = {
       pokemonName: history.state.pokemonName,
+      pokemonId: history.state.pokemonId,
     };
   }
 
   template() {
-    const props =this.$props.pokemonName;
+    const name = this.$props.pokemonName;
+    const id = this.$props.pokemonId;
     return `
       <div class="result">
         <div class="img-compelete">
-          <img id="colorImage" src="../data/testB/0007.jpg">
-          <h1 id="pokemonName">${props}</h1>
+          <img id="colorImage" src="../data/testB/${id}.jpg">
+          <h1 id="pokemonName">${name}</h1>
         </div>
       </div>  
     `;
