@@ -374,19 +374,22 @@ main.pokemon-list {
   color: rgb(248, 236, 174);
 }
 
+#context {
+  position: relative;
+}
+
 #colorText input {
   width: 80%;
   border: 1px solid #7f7fd59c;
   border-radius: 8px;
   padding: 10px 12px;
-  position: relative;
 }
 
 #submit-img {
   position: absolute;
   width: 22px;
-  bottom: 100px;
-  right: 95px;
+  top: 22%;
+  right: 40px;
   cursor: pointer;
 }
 
