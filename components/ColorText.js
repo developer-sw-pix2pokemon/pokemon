@@ -42,6 +42,7 @@ export default class ColorText extends Component {
     pokeballElement.addEventListener("click", () => {
       history.pushState(
         {
+          pokemonId: this.$props.imageId,
           pokemonName: this.$props.pokemonName,
           prompt: this.$state.prompt,
         },
