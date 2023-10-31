@@ -21,6 +21,7 @@ export default class App extends Component {
     const router = new Router($main);
     router.addRoute("#collect", pages.collect);
     id.forEach((item) => router.addRoute(`#create/${item}`, pages.create));
+    router.addRoute("#loading", pages.loading);
     router.addRoute("#result", pages.result);
 
     router.start();
