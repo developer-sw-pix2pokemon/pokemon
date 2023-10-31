@@ -47,7 +47,7 @@ export default class ColorText extends Component {
           prompt: this.$state.prompt,
         },
         null,
-        window.location.href.replace(`create/${id}`, "loading")
+        window.location.href.replace(`create/${id}`, "result")
       );
       history.go(0);
     });
