@@ -2,17 +2,14 @@ import Component from "../core/Component.js";
 // import ColorImage from "../components/ColorImage.js";
 
 export default class ResultPage extends Component {
-  // 추후 결과값을 불러오는 코드 추가 예정
-  setup() {
-    this.$props = {
-      pokemonName: history.state.pokemonName,
-      pokemonId: history.state.pokemonId,
-    };
-  }
+  setup() {}
 
   template() {
-    const name = this.$props.pokemonName;
-    const id = this.$props.pokemonId;
+    const name = sessionStorage.getItem("name")
+      ? sessionStorage.getItem("name")
+      : "";
+    const id = sessionStorage.getItem("id");
+
     return `
       <div class="result">
         <div class="img-compelete">
