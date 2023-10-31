@@ -395,6 +395,64 @@ main.pokemon-list {
 
 /*-------------------------------------------------------------------------*/
 
+/* LoadingPage */
+
+.loading {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background: #7f7fd5; /* fallback for old browsers */
+  background: linear-gradient(
+    to right,
+    #91eae4,
+    #86a8e7,
+    #7f7fd5
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #91eae4,
+    #86a8e7,
+    #7f7fd5
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-animation: huerotator 10s infinite alternate;
+  animation: huerotator 10s infinite alternate;
+
+  > h2 {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  > img {
+    width: 40px;
+    animation: motion 0.7s linear 0s infinite alternate;
+  }
+}
+
+@keyframes huerotator {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes motion {
+  0% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: 20px;
+  }
+}
+/*-------------------------------------------------------------------------*/
+
 /* ResultPage */
 
 .result {
