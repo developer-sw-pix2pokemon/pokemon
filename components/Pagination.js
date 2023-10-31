@@ -17,33 +17,30 @@ export default class Pagination extends Component {
       <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page">&gt;</button>
     `;
   }
-
   mounted() {
     const paginationNumbers = this.$target.querySelector("#pagination-numbers");
-    console.log('paginationNumbers',paginationNumbers)
     const prevButton = this.$target.querySelector("#prev-button");
     const nextButton = this.$target.querySelector("#next-button");
 
     prevButton.addEventListener("click", () => {
-      const newPage = this.$state.currentPage - 1; // Decrement the current page
-      if (newPage >= 1) { // Check if the new page is within the valid range
-        this.changePage(newPage); // Pass the new page to changePage method
+      const newPage = this.$state.currentPage - 1;
+      if (newPage >= 1) {
+        this.changePage(newPage);
       }
     });
 
-
     nextButton.addEventListener("click", () => {
       const pageCount = this.calculatePageCount();
-      const newPage = this.$state.currentPage + 1; // Increment the current page
-      if (newPage <= pageCount) { // Check if the new page is within the valid range
-        this.changePage(newPage); // Pass the new page to changePage method
+      const newPage = this.$state.currentPage + 1;
+      if (newPage <= pageCount) {
+        this.changePage(newPage);
       }
-    })
+    });
 
     paginationNumbers.addEventListener("click", (e) => {
       if (e.target.classList.contains("pagination-number")) {
         const pageNumber = parseInt(e.target.textContent, 10);
-        console.log('cc')
+        console.log('cc',pageNumber); // 디버깅용 로그
         this.changePage(pageNumber);
       }
     });
@@ -57,8 +54,18 @@ export default class Pagination extends Component {
     for (let i = 1; i <= pageCount; i++) {
       const pageNumber = document.createElement("button");
       pageNumber.className = "pagination-number";
-      pageNumber.textContent = i;
       paginationNumbers.appendChild(pageNumber);
+      if (i === this.$state.currentPage) {
+        // 이미지 추가
+        const pokemonBallImage = document.createElement("img");
+        pokemonBallImage.src = "../img/pokeball.png";
+        pokemonBallImage.alt = `Page ${i}`;
+        pokemonBallImage.width = 30; // 이미지 너비를 80px로 설정
+        pokemonBallImage.height = 30; // 이미지 높이를 80px로 설정
+        pageNumber.appendChild(pokemonBallImage);
+      }else{
+        pageNumber.textContent = i;
+      }
     }
 
     this.updatePageButtons();
@@ -72,12 +79,14 @@ export default class Pagination extends Component {
 
   changePage(newPage) {
     const pageCount = this.calculatePageCount();
-    console.log('newPage',newPage)
+    console.log('newPager',newPage,'pageCount',pageCount)
+
     if (newPage < 1) {
       newPage = 1;
     } else if (newPage > pageCount) {
       newPage = pageCount;
     }
+
     this.$state.currentPage = newPage;
     this.updatePageButtons();
     this.updatePaginationNumbers();

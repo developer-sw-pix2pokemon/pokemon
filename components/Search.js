@@ -1,8 +1,9 @@
 import Component from "../core/Component.js";
+import PokemonItem from "../components/PokemonItem.js";
 
 export default class Search extends Component {
-  setup() {
-    this.$state = {};
+  constructor($target, pokemon) {
+    super($target, pokemon);
   }
   template() {
     return `
@@ -36,16 +37,22 @@ export default class Search extends Component {
   filter() {
     const search = this.$target.querySelector("input").value.toLowerCase();
     const list = document.getElementsByClassName("PokemonItem");
+    console.log('list',list,this.$props,search)
 
-    for (let i = 0; i < list.length; i++) {
-      const pokemonName = list[i].getElementsByClassName("pokemon-name")[0];
-      const nameText = pokemonName.textContent.toLowerCase();
+    const matchedData = this.$props.find(pokemon => pokemon.name.toLowerCase().includes(search));
 
-      if (nameText.includes(search)) {
-        list[i].style.display = "block";
-      } else {
-        list[i].style.display = "none";
-      }
+    console.log('mat',matchedData)
+
+    if (matchedData) {
+      // Matched data found, render a new PokemonItem
+      const $pokemonItem = document.getElementById("pokemonItem");
+      $pokemonItem.innerHTML = ""; // Clear existing content
+
+      const newPokemonItem = new PokemonItem($pokemonItem, [matchedData]);
+    } else {
+      // No matched data found, display a message or handle as needed
+      console.log('No matching Pokemon found');
     }
+
   }
 }
