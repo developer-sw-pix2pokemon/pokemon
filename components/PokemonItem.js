@@ -9,7 +9,7 @@ export default class PokemonItem extends Component {
     const pokemonItems = this.$props.map(({ id, name, att }) => {
       return `
         <div class="PokemonItem" data-id="${id}">
-          <a href="/#create/${id}">
+          <a href="">
             <img src="../data/testB/${id}.jpg" />
             <img src="../data/testA/${id}.jpg" />
             <p class="pokemon-name">이름 : ${name}</p>
@@ -19,20 +19,25 @@ export default class PokemonItem extends Component {
       `;
     });
 
-    return pokemonItems.join(""); // 배열을 문자열로 변환
+    return pokemonItems.join("");
   }
 
   mounted() {
+    // 스크롤 내려감 방지
+    if (history.scrollRestoration) {
+      history.scrollRestoration = "manual";
+    }
+
     this.$target.querySelectorAll(".PokemonItem").forEach((item, index) => {
       const id = this.$props[index].id;
       item.addEventListener("click", (e) => {
-        e.preventDefault(); // 기본 링크 동작을 중지
+        e.preventDefault();
         history.pushState(
           {
             data: this.$props[index],
           },
           null,
-          `/#create/${id}` // 변경된 부분: history.pushState 경로 설정
+          `/#create/${id}`
         );
         history.go(0);
       });

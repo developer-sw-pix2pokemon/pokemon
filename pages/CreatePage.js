@@ -36,11 +36,11 @@ export default class CreatePage extends Component {
     // 입력 시 pokemonName 업데이트
     const nameBox = document.getElementById("name");
     nameBox.addEventListener("blur", (event) => {
-      this.$props.pokemonName = event.target.value; // 입력이 완료될 때 상태 업데이트
-      sessionStorage.setItem("name", this.$props.pokemonName); // 세션스토리지에 이름 업데이트
+      this.$props.pokemonName = event.target.value;
+      sessionStorage.setItem("name", this.$props.pokemonName);
     });
 
-    sessionStorage.setItem("id", this.$props.imageId); // 세션스토리지에 아이디 업데이트
+    sessionStorage.setItem("id", this.$props.imageId);
 
     const $image = this.$target.querySelector("#image");
     new Image($image, this.$props);

@@ -15,11 +15,16 @@ export default class Search extends Component {
     <img
       src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
     />
+    <button id="reset">reset</button>
     <p>Ex) 피카츄, 꼬부기, 이브이, ..</p>      
     `;
   }
 
   setEvent() {
+    // reset 버튼을 눌렀을 때
+    this.addEvent("click", "button", () => {
+      location.reload(); // 페이지 새로고침
+    });
     // 검색 버튼을 눌렀을 때
     this.addEvent("click", "img", (e) => {
       this.filter(); // 검색 함수 호출
@@ -37,22 +42,14 @@ export default class Search extends Component {
   filter() {
     const search = this.$target.querySelector("input").value.toLowerCase();
     const list = document.getElementsByClassName("PokemonItem");
-    console.log('list',list,this.$props,search)
 
-    const matchedData = this.$props.find(pokemon => pokemon.name.toLowerCase().includes(search));
-
-    console.log('mat',matchedData)
+    const matchedData = this.$props.find((pokemon) =>
+      pokemon.name.toLowerCase().includes(search)
+    );
 
     if (matchedData) {
-      // Matched data found, render a new PokemonItem
       const $pokemonItem = document.getElementById("pokemonItem");
-      $pokemonItem.innerHTML = ""; // Clear existing content
-
       const newPokemonItem = new PokemonItem($pokemonItem, [matchedData]);
-    } else {
-      // No matched data found, display a message or handle as needed
-      console.log('No matching Pokemon found');
     }
-
   }
 }

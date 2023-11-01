@@ -32,8 +32,7 @@ export default class ColorText extends Component {
     // input받은 내용 prompt에 저장
     const promptBox = document.getElementById("prompt");
     promptBox.addEventListener("blur", (event) => {
-      this.$state.prompt = event.target.value; // 입력이 완료될 때 상태 업데이트
-      //console.log(this.$state.prompt); // 상태 확인을 위한 콘솔 출력
+      this.$state.prompt = event.target.value;
     });
 
     const pokeballElement = this.$target.querySelector("#pokeball");
