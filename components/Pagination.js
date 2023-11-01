@@ -1,4 +1,4 @@
-import pokemons from '../data/pokemons.js';
+import pokemons from "../data/pokemons.js";
 import Component from "../core/Component.js";
 
 export default class Pagination extends Component {
@@ -6,7 +6,7 @@ export default class Pagination extends Component {
     this.$state = {
       currentPage: 1,
       itemsPerPage: 5,
-      totalItems: pokemons?.length // 총 아이템 수를 관리
+      totalItems: pokemons?.length, // 총 아이템 수를 관리
     };
   }
 
@@ -40,7 +40,6 @@ export default class Pagination extends Component {
     paginationNumbers.addEventListener("click", (e) => {
       if (e.target.classList.contains("pagination-number")) {
         const pageNumber = parseInt(e.target.textContent, 10);
-        console.log('cc',pageNumber); // 디버깅용 로그
         this.changePage(pageNumber);
       }
     });
@@ -63,7 +62,7 @@ export default class Pagination extends Component {
         pokemonBallImage.width = 30; // 이미지 너비를 80px로 설정
         pokemonBallImage.height = 30; // 이미지 높이를 80px로 설정
         pageNumber.appendChild(pokemonBallImage);
-      }else{
+      } else {
         pageNumber.textContent = i;
       }
     }
@@ -76,10 +75,8 @@ export default class Pagination extends Component {
     return Math.ceil(totalItems / itemsPerPage);
   }
 
-
   changePage(newPage) {
     const pageCount = this.calculatePageCount();
-    console.log('newPager',newPage,'pageCount',pageCount)
 
     if (newPage < 1) {
       newPage = 1;
