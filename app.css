@@ -13,7 +13,7 @@ html {
   flex-direction: column;
   margin: 0 auto;
   border: 1px solid #eaeaea;
-  width: 720px; /* 추후 수정 */
+  width: 720px;
 }
 
 main.pokemon-list {
@@ -52,6 +52,14 @@ main.pokemon-list {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+#reset {
+  background-color: rgb(255, 237, 146);
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
 /* 포켓몬 이름 검색창 */
 #search {
   position: relative;
@@ -71,11 +79,14 @@ main.pokemon-list {
   transition: 0.5s;
   box-shadow: 2px 4px 4px 1px #6d6836;
 }
+.searchBox:focus {
+  outline: none;
+}
 
 #search img {
   position: absolute;
   top: 30%;
-  left: 77%;
+  left: 477px;
   width: 17px;
 }
 
@@ -302,7 +313,7 @@ main.pokemon-list {
 
 .createPageHeader {
   display: flex;
-  justify-content: center; /* 수평 가운데 정렬 */
+  justify-content: center;
   align-items: center;
   padding: 10px;
 }
@@ -382,7 +393,10 @@ main.pokemon-list {
   width: 80%;
   border: 1px solid #7f7fd59c;
   border-radius: 8px;
-  padding: 10px 12px;
+  padding: 10px 40px 10px 12px;
+}
+#colorText input:focus {
+  outline: none;
 }
 
 #submit-img {
@@ -470,7 +484,7 @@ main.pokemon-list {
 }
 
 .img-compelete {
-  height: 800px;
+  height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -480,7 +494,7 @@ main.pokemon-list {
 
 #colorImage {
   width: 60%;
-  height: 500px;
+  height: 480px;
   background-color: #fff;
   padding: 10px;
   box-shadow: 3px 3px 6px 3px #85a38c;
@@ -494,4 +508,15 @@ main.pokemon-list {
   color: rgb(103, 100, 100);
   padding-top: 30px;
   font-weight: bold;
+}
+
+#homBtn {
+  margin-top: 10px;
+  background-color: #8cd57f;
+  color: white;
+  padding: 4px 10px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
 }
