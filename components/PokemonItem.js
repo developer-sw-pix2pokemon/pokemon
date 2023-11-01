@@ -10,8 +10,8 @@ export default class PokemonItem extends Component {
       return `
         <div class="PokemonItem" data-id="${id}">
           <a href="">
-            <img src="../../image/testB/${id}.jpg" />
-            <img src="../../image/testA/${id}.jpg" />
+            <img src="../image/testB/${id}.jpg" />
+            <img src="../image/testA/${id}.jpg" />
             <p class="pokemon-name">이름 : ${name}</p>
             <p class="pokemon-att"> 속성 : ${att}</p>
           </a>
@@ -37,7 +37,7 @@ export default class PokemonItem extends Component {
             data: this.$props[index],
           },
           null,
-          `/#create/${id}`
+          `#create/${id}`
         );
         history.go(0);
       });

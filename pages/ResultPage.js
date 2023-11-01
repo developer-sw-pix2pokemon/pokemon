@@ -12,7 +12,7 @@ export default class ResultPage extends Component {
     return `
       <div class="result">
         <div class="img-compelete">
-          <img id="colorImage" src="../../image/testB/${id}.jpg">
+          <img id="colorImage" src="../image/testB/${id}.jpg">
           <h1 id="pokemonName">${name}</h1>
           <button id="homBtn">Home</button>
         </div>
@@ -37,7 +37,7 @@ export default class ResultPage extends Component {
     // go back home
     const backHome = document.querySelector("#homBtn");
     backHome.addEventListener("click", () => {
-      window.location.href = "/#collect";
+      window.location.href = "#collect";
       sessionStorage.clear();
     });
   }

@@ -5,7 +5,6 @@ export default class Category extends Component {
     this.$state = {
       selectedCategory: null, // 추가: 선택된 카테고리를 저장하는 상태 변수
     };
-
   }
   template() {
     return `
@@ -33,7 +32,7 @@ export default class Category extends Component {
     `;
   }
   setEvent() {
-    this.addEvent('click', '.att-button > button', ({ target }) => {
+    this.addEvent("click", ".att-button > button", ({ target }) => {
       const category = target.textContent;
       this.$state.selectedCategory = category;
       this.notify(); // 상태 변경을 알림
@@ -45,7 +44,7 @@ export default class Category extends Component {
   }
 
   notify() {
-    const notifyEvent = new Event('notify'); // 새 이벤트 생성
+    const notifyEvent = new Event("notify"); // 새 이벤트 생성
     this.$target.dispatchEvent(notifyEvent); // 이벤트 발생
   }
 }

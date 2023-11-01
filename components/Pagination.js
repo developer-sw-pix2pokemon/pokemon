@@ -1,4 +1,4 @@
-import pokemons from "../data/pokemons.js";
+import pokemons from "../image/pokemons.js";
 import Component from "../core/Component.js";
 
 export default class Pagination extends Component {

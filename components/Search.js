@@ -1,5 +1,5 @@
 import Component from "../core/Component.js";
-import PokemonItem from "../components/PokemonItem.js";
+import PokemonItem from "./PokemonItem.js";
 
 export default class Search extends Component {
   constructor($target, pokemon) {
