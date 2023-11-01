@@ -10,8 +10,8 @@ export default class PokemonItem extends Component {
       return `
         <div class="PokemonItem" data-id="${id}">
           <a href="">
-            <img src="../data/testB/${id}.jpg" />
-            <img src="../data/testA/${id}.jpg" />
+            <img src="../../image/testB/${id}.jpg" />
+            <img src="../../image/testA/${id}.jpg" />
             <p class="pokemon-name">이름 : ${name}</p>
             <p class="pokemon-att"> 속성 : ${att}</p>
           </a>

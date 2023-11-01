@@ -1,5 +1,5 @@
 import Component from "../core/Component.js";
-import pokemons from "../data/pokemons.js";
+import pokemons from "../../image/pokemons.js";
 import Search from "../components/Search.js";
 import Category from "../components/Category.js";
 import PokemonItem from "../components/PokemonItem.js";
