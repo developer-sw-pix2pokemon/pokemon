@@ -12,7 +12,7 @@ export default class ResultPage extends Component {
     return `
       <div class="result">
         <div class="img-compelete">
-          <img id="colorImage" src="../image/testB/${id}.jpg">
+          <img id="colorImage" src="../result/result_{id}.jpg">
           <h1 id="pokemonName">${name}</h1>
           <button id="homBtn">Home</button>
         </div>
