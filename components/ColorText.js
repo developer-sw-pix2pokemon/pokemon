@@ -39,16 +39,30 @@ export default class ColorText extends Component {
     const id = this.$props.imageId;
     // 추후 프롬프트를 백으로 보내는 코드로 수정
     pokeballElement.addEventListener("click", () => {
-      history.pushState(
-        {
-          pokemonId: this.$props.imageId,
-          pokemonName: this.$props.pokemonName,
-          prompt: this.$state.prompt,
+      // id와 prompt POST로 전달
+      fetch("", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        null,
-        window.location.href.replace(`create/${id}`, "loading")
-      );
-      history.go(0);
+        body: JSON.stringify({
+          pokemonId: this.$props.imageId,
+          prompt: this.$state.prompt,
+        }),  
+      })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(error => console.log("Error: ", error));
+        history.pushState(
+          {
+            pokemonId: this.$props.imageId,
+            pokemonName: this.$props.pokemonName,
+            prompt: this.$state.prompt,
+          },
+          null,
+          window.location.href.replace(`create/${id}`, "loading")
+        );
+        history.go(0);  
     });
   }
 }
