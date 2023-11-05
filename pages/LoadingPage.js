@@ -2,7 +2,7 @@ import Component from "../core/Component.js";
 
 export default class LoadingPage extends Component {
   setup() {
-    this.$props = {
+    this.$state = {
       loading: true,
     };
   }
@@ -17,25 +17,29 @@ export default class LoadingPage extends Component {
   }
 
   mounted() {
-    this.fetchLoadingState();
+    this.pollLoadingState();
   }
 
-  async fetchLoadingState() {
-    try {
-      const response = await fetch('<<URL>>');
-      const data = await response.json();
-      this.$props.loading = data.loading;
-      if (this.$props.loading) {
-        this.showResultPage();
+  async pollLoadingState() {
+    const interval = 5000; // 0.5초 간격으로 GET 요청 보내기
+
+    const checkLoading = async () => {
+      try {
+        const response = await fetch("/");
+        const data = await response.json();
+        this.$state.loading = data.loading;
+        if (!this.$state.loading) {
+          clearInterval(pollingInterval); // loading 상태가 바뀌었다면 멈추고 result로 이동
+          window.location.href = window.location.href.replace(
+            "loading",
+            "result"
+          );
+        }
+      } catch (error) {
+        console.error("Failed to fetch loading state:", error);
       }
-    } catch (error) {
-      console.error('Failed to fetch loading state:', error);
-    }
-  }
+    };
 
-  showResultPage() {
-    // Assuming the result page is another component
-    const resultPage = new ResultPage();
-    resultPage.render();
+    const pollingInterval = setInterval(checkLoading, interval);
   }
 }

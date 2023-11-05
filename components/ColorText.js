@@ -37,22 +37,25 @@ export default class ColorText extends Component {
 
     const pokeballElement = this.$target.querySelector("#pokeball");
     const id = this.$props.imageId;
-    // 추후 프롬프트를 백으로 보내는 코드로 수정
-    pokeballElement.addEventListener("click", () => {
-      // id와 prompt POST로 전달
-      fetch("", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          pokemonId: this.$props.imageId,
-          prompt: this.$state.prompt,
-        }),  
-      })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(error => console.log("Error: ", error));
+
+    // POST 요청
+    pokeballElement.addEventListener("click", async () => {
+      try {
+        // id와 prompt POST로 전달
+        const response = await fetch("/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            pokemonId: this.$props.imageId,
+            prompt: this.$state.prompt,
+          }),
+        });
+
+        const data = await response.json();
+        console.log(data);
+
         history.pushState(
           {
             pokemonId: this.$props.imageId,
@@ -62,7 +65,10 @@ export default class ColorText extends Component {
           null,
           window.location.href.replace(`create/${id}`, "loading")
         );
-        history.go(0);  
+        history.go(0);
+      } catch (error) {
+        console.log("Error: ", error);
+      }
     });
   }
 }

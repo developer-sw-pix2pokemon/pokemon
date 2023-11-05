@@ -9,10 +9,11 @@ export default class ResultPage extends Component {
       : "";
     const id = sessionStorage.getItem("id");
 
+    // 생성 이미지는 ../resut/result_{id}.jpg
     return `
       <div class="result">
         <div class="img-compelete">
-          <img id="colorImage" src="../result/result_{id}.jpg">
+          <img id="colorImage" src='../result/result_${id}.jpg'>
           <h1 id="pokemonName">${name}</h1>
           <button id="homBtn">Home</button>
         </div>
