@@ -52,14 +52,6 @@ main.pokemon-list {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-#reset {
-  background-color: rgb(255, 237, 146);
-  border: 1px solid white;
-  border-radius: 10px;
-  padding: 2px 8px;
-  cursor: pointer;
-}
-
 /* 포켓몬 이름 검색창 */
 #search {
   position: relative;
@@ -86,8 +78,9 @@ main.pokemon-list {
 #search img {
   position: absolute;
   top: 30%;
-  left: 477px;
+  right: 122px;
   width: 17px;
+  cursor: pointer;
 }
 
 #search p {
@@ -109,7 +102,7 @@ main.pokemon-list {
   color: red;
   font-weight: bold;
   background-color: #fff;
-  padding: 3px 5px;
+  padding: 3px 6px;
   border-radius: 30px;
   margin: 3px;
 }
@@ -123,8 +116,16 @@ main.pokemon-list {
   width: 50px;
   height: 30px;
   margin-top: 3px;
+
+  + button {
+    margin-left: 4px;
+  }
 }
+
 .att-button button:hover {
+  color: white;
+  background-color: gray;
+  font-weight: bold;
   transform: scale(1.2);
 }
 
@@ -185,12 +186,6 @@ main.pokemon-list {
 }
 #btn17 {
   border-color: rgb(0, 0, 0);
-}
-
-.att-button button:hover {
-  color: white;
-  background-color: gray;
-  font-weight: bold;
 }
 
 /* 포켓몬 리스트 */

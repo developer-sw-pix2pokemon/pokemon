@@ -45,11 +45,6 @@ const pokemons = [
     att: "물",
   },
   {
-    id: "0008",
-    name: "거북왕",
-    att: "물",
-  },
-  {
     id: "0009",
     name: "캐터피",
     att: "벌레",
