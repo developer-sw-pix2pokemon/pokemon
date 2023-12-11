@@ -29,7 +29,6 @@ export default class ColorText extends Component {
   }
 
   mounted() {
-    // input받은 내용 prompt에 저장
     const promptBox = document.getElementById("prompt");
     promptBox.addEventListener("blur", (event) => {
       this.$state.prompt = event.target.value;
@@ -41,7 +40,6 @@ export default class ColorText extends Component {
     // POST 요청
     pokeballElement.addEventListener("click", async () => {
       try {
-        // id와 prompt POST로 전달
         const response = await fetch("/submit", {
           method: "POST",
           headers: {

@@ -33,7 +33,6 @@ export default class CreatePage extends Component {
   }
 
   mounted() {
-    // 입력 시 pokemonName 업데이트
     const nameBox = document.getElementById("name");
     nameBox.addEventListener("blur", (event) => {
       this.$props.pokemonName = event.target.value;

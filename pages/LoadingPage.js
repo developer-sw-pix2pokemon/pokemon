@@ -21,7 +21,7 @@ export default class LoadingPage extends Component {
   }
 
   async pollLoadingState() {
-    const interval = 5000; // 0.5초 간격으로 GET 요청 보내기
+    const interval = 5000;
 
     const checkLoading = async () => {
       try {
