@@ -63,5 +63,8 @@ export default class Search extends Component {
       $pokemonItemContainer.appendChild($pokemonItem);
       new PokemonItem($pokemonItem, [pokemon]);
     });
+
+    const searchEvent = new CustomEvent("search", { detail: matchedData });
+    this.$target.dispatchEvent(searchEvent);
   }
 }

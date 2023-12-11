@@ -4,9 +4,9 @@ import Component from "../core/Component.js";
 export default class Pagination extends Component {
   setup() {
     this.$state = {
-      currentPage: 1,
+      currentPage: this.$props.currentPage,
       itemsPerPage: 5,
-      totalItems: pokemons?.length, // 총 아이템 수를 관리
+      totalItems: this.$props.totalItems,
     };
   }
 
@@ -48,31 +48,30 @@ export default class Pagination extends Component {
   updatePaginationNumbers() {
     const paginationNumbers = this.$target.querySelector("#pagination-numbers");
     paginationNumbers.innerHTML = "";
-
     const pageCount = this.calculatePageCount();
+
     for (let i = 1; i <= pageCount; i++) {
       const pageNumber = document.createElement("button");
-      pageNumber.className = "pagination-number";
-      paginationNumbers.appendChild(pageNumber);
+      pageNumber.classList.add("pagination-number");
+
       if (i === this.$state.currentPage) {
-        // 이미지 추가
         const pokemonBallImage = document.createElement("img");
         pokemonBallImage.src = "../img/pokeball.png";
         pokemonBallImage.alt = `Page ${i}`;
-        pokemonBallImage.width = 30; // 이미지 너비를 80px로 설정
-        pokemonBallImage.height = 30; // 이미지 높이를 80px로 설정
+        pokemonBallImage.width = 30;
+        pokemonBallImage.height = 30;
         pageNumber.appendChild(pokemonBallImage);
       } else {
         pageNumber.textContent = i;
       }
+      paginationNumbers.appendChild(pageNumber);
     }
 
     this.updatePageButtons();
   }
 
   calculatePageCount() {
-    const { itemsPerPage, totalItems } = this.$state;
-    return Math.ceil(totalItems / itemsPerPage);
+    return Math.ceil(this.$state.totalItems / this.$state.itemsPerPage);
   }
 
   changePage(newPage) {
@@ -87,23 +86,24 @@ export default class Pagination extends Component {
     this.$state.currentPage = newPage;
     this.updatePageButtons();
     this.updatePaginationNumbers();
+
+    const notifyEvent = new CustomEvent("notify", { detail: newPage });
+    this.$target.dispatchEvent(notifyEvent);
   }
 
   updatePageButtons() {
-    const prevButton = this.$target.querySelector("#prev-button");
-    const nextButton = this.$target.querySelector("#next-button");
-    const { currentPage } = this.$state;
-
-    prevButton.disabled = currentPage === 1;
-    nextButton.disabled = currentPage === this.calculatePageCount();
+    const $prevButton = this.$target.querySelector("#prev-button");
+    const $nextButton = this.$target.querySelector("#next-button");
+    $prevButton.disabled = this.$state.currentPage === 1;
+    $nextButton.disabled =
+      this.$state.currentPage === this.calculatePageCount();
   }
 
-  // 외부에서 현재 페이지 값을 가져올 수 있는 메소드
   getCurrentPage() {
     return this.$state.currentPage;
   }
 
-  // 외부에서 총 아이템 수와 현재 페이지를 설정할 수 있는 메소드
+  // 총 아이템 수와 현재 페이지를 설정하는 메서드
   setTotalItemsAndPage(totalItems, currentPage = 1) {
     this.$state.totalItems = totalItems;
     this.$state.currentPage = currentPage;

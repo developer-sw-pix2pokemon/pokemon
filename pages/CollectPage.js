@@ -10,7 +10,9 @@ export default class CollectPage extends Component {
     this.$state = {
       pokemons,
       currentPage: 1,
+      filteredPokemons: pokemons,
     };
+    this.paginationComponent = null;
   }
 
   template() {
@@ -34,87 +36,64 @@ export default class CollectPage extends Component {
     const $pagination = this.$target.querySelector("#pagination");
 
     const searchComponent = new Search($search, this.$state.pokemons);
-    const categoryComponent = new Category($category);
-    const paginationComponent = new Pagination($pagination);
+    const categoryComponent = new Category($category, this.$state.pokemons);
     const pokemonItemComponent = new PokemonItem(
       $pokemonItem,
       this.$state.pokemons
     );
 
-    $category.addEventListener("notify", () => {
+    // pagination
+    this.paginationComponent = new Pagination($pagination, {
+      totalItems: this.$state.pokemons.length,
+      currentPage: this.$state.currentPage,
+    });
+    this.paginationComponent.setTotalItemsAndPage(this.$state.pokemons.length);
+
+    $pagination.addEventListener("notify", (event) => {
+      const newPage = event.detail;
+      this.changePage(newPage);
+    });
+
+    // category
+    $category.addEventListener("notify", (event) => {
+      const categoriedPokemons = event.detail;
+      this.$state.filteredPokemons = categoriedPokemons;
       this.$state.currentPage = 1;
-      this.$state.selectedCategory = categoryComponent.getSelectedCategory();
-      this.renderPokemonList();
+      this.paginationComponent.setTotalItemsAndPage(categoriedPokemons.length);
+      this.renderPokemonList(categoriedPokemons);
     });
 
-    $search.addEventListener("search", () => {
-      this.$state.selectedCategory = null;
-      this.renderPokemonList();
+    // search
+    $search.addEventListener("search", (event) => {
+      const searchedPokemons = event.detail;
+      this.$state.filteredPokemons = searchedPokemons;
+      this.$state.currentPage = 1;
+      this.paginationComponent.setTotalItemsAndPage(searchedPokemons.length);
+      this.renderPokemonList(searchedPokemons);
     });
 
-    paginationComponent.setTotalItemsAndPage(this.$state.pokemons.length);
-
-    const handlePagination = () => {
-      this.renderPokemonList();
-    };
-
-    const prevButton = $pagination.querySelector("#prev-button");
-    const nextButton = $pagination.querySelector("#next-button");
-
-    $pagination.addEventListener("click", (e) => {
-      if (e.target.classList.contains("pagination-number")) {
-        this.$state.selectedCategory = null;
-        const pageNumber = parseInt(e.target.textContent, 10);
-        this.$state.currentPage = pageNumber;
-        paginationComponent.changePage(pageNumber);
-        handlePagination();
-      }
-    });
-
-    prevButton.addEventListener("click", () => {
-      const currentPage = this.$state.currentPage;
-      this.$state.selectedCategory = null;
-      if (currentPage > 1) {
-        this.$state.currentPage = currentPage - 1;
-        paginationComponent.changePage(this.$state.currentPage);
-        handlePagination(this.$state.currentPage);
-      }
-    });
-    nextButton.addEventListener("click", () => {
-      const pageCount = paginationComponent.calculatePageCount();
-
-      if (this.$state.currentPage < pageCount) {
-        paginationComponent.changePage(this.$state.currentPage + 1);
-        this.$state.currentPage = this.$state.currentPage + 1;
-        handlePagination(this.$state.currentPage);
-      }
-    });
-
-    this.renderPokemonList();
+    this.renderPokemonList(this.$state.pokemons);
   }
 
-  renderPokemonList() {
-    const selectedCategory = this.$state.selectedCategory;
+  renderPokemonList(pokemons) {
     const currentPage = this.$state.currentPage;
     const itemsPerPage = 5;
-
-    // 선택된 카테고리에 따라 필터링된 포켓몬 리스트 가져오기
-    const filteredPokemons = this.$state.pokemons.filter((pokemon) => {
-      if (selectedCategory == null) {
-        return true;
-      }
-      return pokemon.att.includes(selectedCategory);
-    });
 
     // 현재 페이지에 해당하는 데이터만 추출
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const pokemonsToShow = filteredPokemons.slice(startIndex, endIndex);
+    const pokemonsToShow = pokemons.slice(startIndex, endIndex);
+
     // PokemonItem 컴포넌트의 포켓몬 데이터를 업데이트하고 다시 렌더링
     this.$target.querySelector("#pokemonItem").innerHTML = "";
     const pokemonItemComponent = new PokemonItem(
       this.$target.querySelector("#pokemonItem"),
       pokemonsToShow
     );
+  }
+
+  changePage(newPage) {
+    this.$state.currentPage = newPage;
+    this.renderPokemonList(this.$state.filteredPokemons);
   }
 }
