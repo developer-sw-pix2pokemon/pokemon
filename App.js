@@ -3,7 +3,7 @@ import Component from "./core/Component.js";
 import createPages from "./pages/index.js";
 
 export default class App extends Component {
-  template() /*html*/ {
+  template() {
     return `
     <main>
     
@@ -14,7 +14,7 @@ export default class App extends Component {
   mounted() {
     const $main = this.$target.querySelector("main");
     const pages = createPages($main);
-    const id = Array.from({ length: 20 }, (_, index) =>
+    const id = Array.from({ length: 72 }, (_, index) =>
       index.toString().padStart(4, "0")
     );
 

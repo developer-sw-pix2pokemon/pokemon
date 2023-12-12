@@ -50,7 +50,18 @@ export default class Pagination extends Component {
     paginationNumbers.innerHTML = "";
     const pageCount = this.calculatePageCount();
 
-    for (let i = 1; i <= pageCount; i++) {
+    let startPage = Math.max(this.$state.currentPage - 2, 1);
+    let endPage = Math.min(startPage + 4, pageCount);
+
+    if (this.$state.currentPage - 2 < 1) {
+      endPage = Math.min(5, pageCount);
+    }
+
+    if (this.$state.currentPage + 2 > pageCount) {
+      startPage = Math.max(pageCount - 4, 1);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
       const pageNumber = document.createElement("button");
       pageNumber.classList.add("pagination-number");
 
