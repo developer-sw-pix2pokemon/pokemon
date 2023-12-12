@@ -439,40 +439,42 @@ html {
   background: linear-gradient(to right, #faffd1, #a1ffce);
 }
 
-.img-compelete {
+.completedImg {
   height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
 
-#colorImage {
-  width: 60%;
-  height: 480px;
-  background-color: #fff;
-  padding: 10px;
-  box-shadow: 3px 3px 6px 3px #85a38c;
-}
-#colorImage:hover {
-  transform: scale(1.07);
-  transition: 0.5s;
-}
+  & > img {
+    width: 60%;
+    height: 480px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 3px 3px 6px 3px #85a38c;
 
-#pokemonName {
-  color: rgb(103, 100, 100);
-  padding-top: 30px;
-  font-weight: bold;
-}
+    &:hover {
+      transform: scale(1.07);
+      transition: 0.5s;
+    }
+  }
 
-#homBtn {
-  margin-top: 10px;
-  background-color: #8cd57f;
-  color: white;
-  padding: 4px 10px;
-  font-size: 20px;
-  font-weight: bold;
-  border-radius: 4px;
-  border: none;
+  & > h1 {
+    color: rgb(103, 100, 100);
+    padding-top: 30px;
+  }
+
+  & > button {
+    background-color: #8cd57f;
+    color: white;
+    padding: 4px 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    &:hover {
+      background-color: #70a966;
+    }
+  }
 }

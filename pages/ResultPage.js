@@ -11,11 +11,11 @@ export default class ResultPage extends Component {
 
     // 생성 이미지는 ../resut/result_{id}.jpg
     return `
-      <div class="result">
-        <div class="img-compelete">
-          <img id="colorImage" src='../result/result_${id}.jpg'>
+      <div class="result py-5">
+        <div class="completedImg">
+          <img id="coloredImage" src='../result/result_${id}.jpg' alt="생성된 이미지">
           <h1 id="pokemonName">${name}</h1>
-          <button id="homBtn">Home</button>
+          <button class="mt-2" id="homeBtn">Home</button>
         </div>
       </div>  
     `;
@@ -23,11 +23,11 @@ export default class ResultPage extends Component {
 
   mounted() {
     //img download
-    const colorImage = document.querySelector("#colorImage");
+    const coloredImage = document.querySelector("#coloredImage");
 
-    colorImage.addEventListener("click", () => {
+    coloredImage.addEventListener("click", () => {
       const a = document.createElement("a");
-      a.href = colorImage.src;
+      a.href = coloredImage.src;
       a.download = "image.jpg";
       a.style.display = "none";
       document.body.appendChild(a);
@@ -36,9 +36,9 @@ export default class ResultPage extends Component {
     });
 
     // go back home
-    const backHome = document.querySelector("#homBtn");
+    const backHome = document.querySelector("#homeBtn");
     backHome.addEventListener("click", () => {
-      window.location.href = "#collect";
+      window.location.href = window.location.href.replace("result", "collect");
       sessionStorage.clear();
     });
   }
