@@ -3,7 +3,7 @@ import ColorText from "../components/ColorText.js";
 
 export default class CreatePage extends Component {
   setup() {
-    this.$props = {
+    this.$state = {
       imageId: history.state.data.id,
       pokemonName: "",
     };
@@ -22,7 +22,7 @@ export default class CreatePage extends Component {
               <input type="text" id="name" name="name" placeholder="나의 포켓몬 이름"/>
             </div>
             <div class="drawing p-4">
-              <img class="w-75 h-100" src='../image/testA/${this.$props.imageId}.jpg'>
+              <img class="w-75 h-100" src='../image/testA/${this.$state.imageId}.jpg'>
               <div class="py-4" id="colorText"></div>
             </div>
           </div>
@@ -35,13 +35,13 @@ export default class CreatePage extends Component {
     const nameBox = document.getElementById("name");
 
     nameBox.addEventListener("blur", (event) => {
-      this.$props.pokemonName = event.target.value;
-      sessionStorage.setItem("name", this.$props.pokemonName);
+      this.$state.pokemonName = event.target.value;
+      sessionStorage.setItem("name", this.$state.pokemonName);
     });
 
-    sessionStorage.setItem("id", this.$props.imageId);
+    sessionStorage.setItem("id", this.$state.imageId);
 
     const $colorText = this.$target.querySelector("#colorText");
-    new ColorText($colorText, this.$props);
+    new ColorText($colorText, this.$state);
   }
 }

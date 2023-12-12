@@ -1,8 +1,6 @@
 import Component from "../core/Component.js";
 
 export default class ResultPage extends Component {
-  setup() {}
-
   template() {
     const name = sessionStorage.getItem("name")
       ? sessionStorage.getItem("name")
