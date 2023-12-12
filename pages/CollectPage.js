@@ -17,12 +17,12 @@ export default class CollectPage extends Component {
 
   template() {
     return `
-      <header class="collectPageHeader">
-        <h1>Make Your Pokemon</h1>
+      <header class="collectHeader text-center w-100 h-100 pb-2 position-relative">
+        <h1 class="m-0 pt-4 position-relative">Make Your Pokemon</h1>
         <div id="search"></div>
         <div id="category"></div>
       </header>
-      <main class="pokemon-list">
+      <main class="pokemon-list p-5 position-relative">
         <div id="pokemonItem"></div>
       </main>
       <div id="pagination"></div>

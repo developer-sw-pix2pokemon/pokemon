@@ -9,11 +9,13 @@ export default class PokemonItem extends Component {
     const pokemonItems = this.$props.map(({ id, name, att }) => {
       return `
         <div class="PokemonItem" data-id="${id}">
-          <a href="">
+          <a class="d-flex align-items-center position-relative">
             <img src="../image/testB/${id}.jpg" />
             <img src="../image/testA/${id}.jpg" />
-            <p class="pokemon-name">이름 : ${name}</p>
-            <p class="pokemon-att"> 속성 : ${att}</p>
+            <div class="textContainer ms-4">
+              <p>이름: ${name}</p>
+              <p> 속성: ${att}</p>
+            </div>
           </a>
         </div>
       `;

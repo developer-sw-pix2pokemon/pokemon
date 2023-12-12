@@ -11,12 +11,11 @@ export default class Search extends Component {
     <input
       type="text"
       class="searchBox"
-      placeholder="포켓몬 이름을 입력해줘.🐣"
+      placeholder="포켓몬 이름을 입력해주세요!"
     />
     <img
       src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
     />
-    <p>Ex) 피카츄, 꼬부기, 이브이, ..</p>      
     `;
   }
 
