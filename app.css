@@ -286,7 +286,8 @@ html {
 /* CreatePage */
 
 .create {
-  height: 850px;
+  height: 100vh;
+  min-height: 850px;
   background: #7f7fd5;
   background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
   background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
@@ -304,19 +305,19 @@ html {
   }
 }
 
-.createPageHeader {
+.createHeader {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
 }
-.createPageHeader h1 {
+.createHeader h1 {
   color: #f3f9ff;
   font-family: "SBAggroB";
+  margin: 0;
 }
 
-.create-container {
-  width: 680px;
+.createContainer {
   background-color: rgba(0, 0, 0, 0.427);
   height: 750px;
   margin: 0 20px;
@@ -325,77 +326,58 @@ html {
   border-radius: 20px;
 }
 
-.content {
-  width: 100%;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-#writeName {
+.writeName {
   display: inline-block;
   background-color: #86a8e798;
-  border-radius: 30px;
-  padding: 15px;
+
+  & > label {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #f3f9ff;
+  }
+  & > input {
+    border: 1px solid #86a8e798;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 20px;
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
-#writeName label {
-  font-size: 20px;
-  font-weight: bold;
-  color: #f3f9ff;
-}
-#writeName label br {
-  display: none;
-}
-#writeName input {
-  border: 1px solid #86a8e798;
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 20px;
-}
-
-.content .drawing {
-  padding: 20px;
+.drawing {
   height: 400px;
 }
 
-#image {
-  width: 80%;
-  height: 100%;
-}
-
 #colorText {
-  margin: 20px 0 0 0;
-  font-size: 15px;
-  color: #f3f9ff;
+  font-size: 1.1rem;
+  & > h4,
+  label {
+    color: #f3f9ff;
+  }
+  & > p {
+    color: rgb(248, 236, 174);
+  }
+  label {
+    font-size: 1.4rem;
+  }
 }
 
-#colorText h4 {
-  margin-bottom: 20px;
-}
-
-#colorText p {
-  color: rgb(248, 236, 174);
-}
-
-#context {
-  position: relative;
-}
-
-#colorText input {
+#prompt {
   width: 80%;
   border: 1px solid #7f7fd59c;
   border-radius: 8px;
   padding: 10px 40px 10px 12px;
-}
-#colorText input:focus {
-  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 
-#submit-img {
+#pokeball > img {
   position: absolute;
   width: 22px;
-  top: 22%;
+  top: 25%;
   right: 40px;
   cursor: pointer;
 }
@@ -417,13 +399,12 @@ html {
   -webkit-animation: huerotator 10s infinite alternate;
   animation: huerotator 10s infinite alternate;
 
-  > h2 {
+  & > h2 {
     color: white;
-    font-weight: bold;
     margin-bottom: 20px;
   }
 
-  > img {
+  & > img {
     width: 40px;
     animation: motion 0.7s linear 0s infinite alternate;
   }

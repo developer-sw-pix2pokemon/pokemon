@@ -13,16 +13,16 @@ export default class ColorText extends Component {
 
   template() {
     return `
-        <h4 style="font-weight:bold">당신의 포켓몬을<br/> <span style="color: #91EAE4";>text</span>로 만들어주세요!🎨🪄</h4>
+        <h4 class="mb-3">당신의 포켓몬을<br/> <span style="color: #91EAE4";>text</span>로 만들어주세요!🎨🪄</h4>
         <p>
             Ex) Turn it into blue for the character's head and body.<br/>
             Turn it into green for the character's eyes and body.
         </p>
-        <div id="context">
-          <label for="prompt">Prompt :</label>
-          <input type="text" id="prompt" name="prompt" value="Turn it into"/>
+        <div class="position-relative">
+          <label>Prompt :</label>
+          <input type="text" id="prompt" value="Turn it into" placeholder="Turn it into"/>
           <a id="pokeball">
-              <img id="submit-img" src="../img/pokeball.png">
+              <img src="../img/pokeball.png">
           </a>
         </div>
         `;
@@ -40,7 +40,7 @@ export default class ColorText extends Component {
     // POST 요청
     pokeballElement.addEventListener("click", async () => {
       try {
-        const response = await fetch("/submit", {
+        await fetch("/submit", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -50,9 +50,6 @@ export default class ColorText extends Component {
             prompt: this.$state.prompt,
           }),
         });
-
-        const data = await response.json();
-        console.log(data);
 
         history.pushState(
           {
@@ -65,7 +62,7 @@ export default class ColorText extends Component {
         );
         history.go(0);
       } catch (error) {
-        console.log("Error: ", error);
+        alert("Error: ", error);
       }
     });
   }
