@@ -61,7 +61,6 @@ export default class Category extends Component {
 
       if (filteredPokemons.length === 0) {
         $pokemonItemContainer.innerHTML = `<p class="mt-3 text-center text-dark-emphasis fs-5 fw-bold">${category} 카테고리에 해당하는 포켓몬이 없습니다.</p>`;
-        return;
       }
 
       const notifyEvent = new CustomEvent("notify", {

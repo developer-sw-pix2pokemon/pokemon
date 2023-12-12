@@ -29,6 +29,7 @@ html {
   margin: 0 auto;
   border: 1px solid #eaeaea;
   width: 720px;
+  min-height: 100%;
 }
 
 /* CollectPage */

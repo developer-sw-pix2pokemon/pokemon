@@ -12,7 +12,7 @@ export default class PokemonItem extends Component {
           <a class="d-flex align-items-center position-relative">
             <img src="../image/testB/${id}.jpg" />
             <img src="../image/testA/${id}.jpg" />
-            <div class="textContainer ms-4">
+            <div class="textContainer ms-5">
               <p>이름: ${name}</p>
               <p> 속성: ${att}</p>
             </div>

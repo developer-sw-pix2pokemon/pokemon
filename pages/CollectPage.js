@@ -59,7 +59,13 @@ export default class CollectPage extends Component {
       const categoriedPokemons = event.detail;
       this.$state.filteredPokemons = categoriedPokemons;
       this.$state.currentPage = 1;
-      this.paginationComponent.setTotalItemsAndPage(categoriedPokemons.length);
+      if (categoriedPokemons.length === 0) {
+        this.paginationComponent.setTotalItemsAndPage(1);
+      } else {
+        this.paginationComponent.setTotalItemsAndPage(
+          categoriedPokemons.length
+        );
+      }
       this.renderPokemonList(categoriedPokemons);
     });
 
@@ -68,7 +74,11 @@ export default class CollectPage extends Component {
       const searchedPokemons = event.detail;
       this.$state.filteredPokemons = searchedPokemons;
       this.$state.currentPage = 1;
-      this.paginationComponent.setTotalItemsAndPage(searchedPokemons.length);
+      if (searchedPokemons.length === 0) {
+        this.paginationComponent.setTotalItemsAndPage(1);
+      } else {
+        this.paginationComponent.setTotalItemsAndPage(searchedPokemons.length);
+      }
       this.renderPokemonList(searchedPokemons);
     });
 
@@ -83,6 +93,10 @@ export default class CollectPage extends Component {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const pokemonsToShow = pokemons.slice(startIndex, endIndex);
+
+    if (pokemonsToShow.length === 0) {
+      return;
+    }
 
     // PokemonItem 컴포넌트의 포켓몬 데이터를 업데이트하고 다시 렌더링
     this.$target.querySelector("#pokemonItem").innerHTML = "";

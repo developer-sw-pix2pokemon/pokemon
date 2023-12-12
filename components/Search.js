@@ -54,14 +54,13 @@ export default class Search extends Component {
     if (matchedData.length === 0) {
       $pokemonItemContainer.innerHTML =
         '<p class="mt-3 text-center text-dark-emphasis fs-5 fw-bold">검색 결과가 없습니다.</p>';
-      return;
+    } else {
+      matchedData.forEach((pokemon) => {
+        const $pokemonItem = document.createElement("div");
+        $pokemonItemContainer.appendChild($pokemonItem);
+        new PokemonItem($pokemonItem, [pokemon]);
+      });
     }
-
-    matchedData.forEach((pokemon) => {
-      const $pokemonItem = document.createElement("div");
-      $pokemonItemContainer.appendChild($pokemonItem);
-      new PokemonItem($pokemonItem, [pokemon]);
-    });
 
     const searchEvent = new CustomEvent("search", { detail: matchedData });
     this.$target.dispatchEvent(searchEvent);
