@@ -30,10 +30,15 @@ export default class LoadingPage extends Component {
         const data = await response.json();
         this.$state.loading = data.loading;
         if (!this.$state.loading) {
-          clearInterval(this.pollingIntervalId); // loading 상태가 바뀌었다면 멈추고 result로 이동
+          clearTimeout(this.pollingTimeoutId); // loading 상태가 바뀌었다면 타이머를 해제하고 result로 이동
           window.location.href = window.location.href.replace(
             "loading",
             "result"
+          );
+        } else {
+          this.pollingTimeoutId = setTimeout(
+            checkLoading,
+            this.pollingInterval
           );
         }
       } catch (error) {
@@ -42,8 +47,7 @@ export default class LoadingPage extends Component {
         );
       }
     };
-
-    this.pollingIntervalId = setInterval(checkLoading, this.pollingInterval);
+    this.pollingTimeoutId = setTimeout(checkLoading, this.pollingInterval);
   }
 
   unmounted() {
